@@ -1,0 +1,50 @@
+<html>
+<head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-violet-900 flex items-center justify-center min-h-screen bg-[url('https://www.pixelstalk.net/wp-content/uploads/2016/06/HD-Abstract-Backgrounds.jpg')] bg-cover bg-center">
+
+
+
+  <div class="flex flex-col items-center">
+    <h1 class="text-8xl font text-[#f0fff4]"> Welcome </h1>
+    <button class="text-4xl text-white px-8 py-4 rounded-lg mt-12" onclick="openLoginForm()">log in</button>
+  </div>
+  <script>
+function openLoginForm() {
+  // Create the form HTML
+  const formHtml = `
+    <div id="login-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div class="bg-black bg-opacity-90 rounded-2xl p-8 w-[350px] shadow-lg text-left">
+        <h2 class="text-2xl font-bold mb-4 text-center">Log In</h2>
+        <form>
+          <label class="block mb-2 font-medium">Username</label>
+          <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mb-4" placeholder="Username" required />
+          
+          
+          <label class="block mb-2 font-medium">Password</label>
+          <input type="password" class="w-full border border-gray-300 rounded px-3 py-2 mb-6" placeholder="Password" required />
+          <div class="flex justify-between items-center">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded" onclick="event.preventDefault(); window.location.href='page2.html';">Log In</button>
+            <button type="button" onclick="closeLoginForm()" class="bg-gray-300 px-4 py-2 rounded">Cancel</button>
+            <a href="register.html" class="text-blue-600 underline ml-4">Registration</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', formHtml);
+}
+function closeLoginForm() {
+  const modal = document.getElementById('login-modal');
+  if (modal) modal.remove();
+}
+</script>
+
+</body>
+</html>

@@ -180,16 +180,4 @@ def pixabay_display(request):
     return render(request, "pixabay_photos.html", {"photos": photos})
 
 
-'''
-a = input("\n\nEnter search term: ")
-print("\n\n\nYoutube data api response")
-fetch_yt_data(a)
-print("\n\n\nPexels api response")
-fetch_pexels(a)
-print("\n\n\nUnsplash api response")
-fetch_unsplash(a)
-print("\n\n\nPixaby api response")
-fetch_pixaby(a)
-'''
-
 

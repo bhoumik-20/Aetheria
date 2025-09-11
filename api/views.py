@@ -57,6 +57,19 @@ def fetch_unsplash(search_term):
     else:
         print(f"Error: {response.status_code} ")
 
+
+#. Pixaby API
+
+def fetch_pixaby(search_term):
+    base_url="https://pixabay.com/api/?key=52233955-a825ef619beefc18095887193&pretty=true&"
+
+    response = requests.get(base_url + "q=" + search_term + "&per_page=4")
+
+    if response.status_code == 200:
+        print(response.json())
+    else:
+        print(f"Error : {response.status_code}")
+
 a = input("\n\nEnter search term: ")
 print("\n\n\nYoutube data api response")
 fetch_yt_data(a)
@@ -64,4 +77,6 @@ print("\n\n\nPexels api response")
 fetch_pexels(a)
 print("\n\n\nUnsplash api response")
 fetch_unsplash(a)
+print("\n\n\nPixaby api response")
+fetch_pixaby(a)
 

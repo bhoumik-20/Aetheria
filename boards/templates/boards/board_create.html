@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Board - VisionBoard AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="logo">
+        <h1>New VisionBoard</h1>
+        <p>Create a new mood board for your ideas!</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn" style="margin-top: 16px;">Create Board</button>
+    </form>
+    <div class="link-container" style="margin-top: 15px;">
+        <a href="{% url 'board_list' %}">Back to My Boards</a>
+    </div>
+</div>
+{% endblock %}

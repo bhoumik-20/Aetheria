@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ board.title }} - VisionBoard AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="logo">
+        <h1>{{ board.title }}</h1>
+        <p>{{ board.description }}</p>
+        <a href="{% url 'board_list' %}" class="btn" style="margin-bottom: 15px;">Back to My Boards</a>
+    </div>
+    <h3>Upload Images</h3>
+    <form method="post" enctype="multipart/form-data" action="{% url 'upload_images' board_pk=board.pk %}">
+        {% csrf_token %}
+        <input type="file" name="images" multiple accept="image/*">
+        <button type="submit" class="btn" style="margin-top: 10px;">Upload</button>
+    </form>
+
+    <h3 style="margin-top:30px;">Gallery</h3>
+    {% if images %}
+        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:10px;">
+            {% for image in images %}
+                <div style="border-radius:8px; overflow:hidden; background:rgba(255,255,255,0.05); box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                    <img src="{{ image.image.url }}" alt="{{ image.original_filename }}" style="height:160px; width:auto; display:block;">
+                    <div style="padding:6px 10px; font-size:0.95em; color:#eee;">{{ image.original_filename }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No images yet. Upload some to start your mood board!</p>
+    {% endif %}
+</div>
+{% endblock %}

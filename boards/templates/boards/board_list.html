@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}My Boards - VisionBoard AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="logo">
+        <h1>My Boards</h1>
+        <a href="{% url 'board_create' %}" class="btn" style="margin-bottom:15px;">+ Create New Board</a>
+    </div>
+
+    {% if boards %}
+        <ul>
+            {% for board in boards %}
+                <li style="padding: 10px; margin-bottom:10px; background: rgba(255,255,255,0.08); border-radius:8px;">
+                    <a href="{% url 'board_detail' board.pk %}" style="color: #ec4899; font-weight: bold;">
+                        {{ board.title }}
+                    </a>
+                    <br>
+                    <span style="font-size:0.90em;">{{ board.description }}</span>
+                    <br>
+                    <span style="font-size:0.80em; color: #ddd;">Created: {{ board.created_at|date:"F j, Y" }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No boards yet. <a href="{% url 'board_create' %}">Create your first board!</a></p>
+    {% endif %}
+</div>
+{% endblock %}
